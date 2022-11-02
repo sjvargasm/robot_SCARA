@@ -1,0 +1,424 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.svm.gui.Controlador">
+   <children>
+      <GridPane AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="25.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" vgrow="SOMETIMES" />
+          <RowConstraints vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <GridPane GridPane.rowIndex="1">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" percentWidth="49.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" percentWidth="49.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Separator orientation="VERTICAL" prefHeight="200.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                  <GridPane>
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" vgrow="SOMETIMES" />
+                      <RowConstraints vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Cinematica directa" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Text>
+                        <GridPane GridPane.rowIndex="1">
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity" />
+                              <ColumnConstraints hgrow="SOMETIMES" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints vgrow="SOMETIMES" />
+                            <RowConstraints vgrow="SOMETIMES" />
+                              <RowConstraints vgrow="SOMETIMES" />
+                            <RowConstraints vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <children>
+                              <Label text="J1" />
+                              <GridPane GridPane.columnIndex="1">
+                                <columnConstraints>
+                                  <ColumnConstraints hgrow="SOMETIMES" />
+                                </columnConstraints>
+                                <rowConstraints>
+                                  <RowConstraints vgrow="SOMETIMES" />
+                                  <RowConstraints vgrow="SOMETIMES" />
+                                </rowConstraints>
+                                 <children>
+                                    <Slider fx:id="j1Slider" max="266.0" min="-90.0" onMouseDragged="#updateTextFieldValue" onMousePressed="#updateTextFieldValue" onMouseReleased="#sendData" showTickLabels="true" showTickMarks="true" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                                    <GridPane GridPane.rowIndex="1">
+                                      <columnConstraints>
+                                        <ColumnConstraints hgrow="SOMETIMES" percentWidth="25.0" />
+                                        <ColumnConstraints hgrow="SOMETIMES" percentWidth="25.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" percentWidth="25.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" percentWidth="25.0" />
+                                      </columnConstraints>
+                                      <rowConstraints>
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                      </rowConstraints>
+                                       <children>
+                                          <Button fx:id="j1Down" mnemonicParsing="false" onAction="#stepSliderValue" text="-" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                                          <Button fx:id="j1Up" mnemonicParsing="false" onAction="#stepSliderValue" text="+" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                                          <TextField fx:id="j1Step" alignment="CENTER" maxWidth="50.0" prefWidth="0.0" text="1" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                                          <TextField fx:id="j1Value" alignment="CENTER" maxWidth="50.0" onKeyPressed="#updateSliderValue" prefWidth="0.0" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                                       </children>
+                                    </GridPane>
+                                 </children>
+                              </GridPane>
+                              <Label layoutX="10.0" layoutY="25.0" text="J2" GridPane.rowIndex="1" />
+                              <GridPane layoutX="23.0" layoutY="10.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                 <columnConstraints>
+                                    <ColumnConstraints hgrow="SOMETIMES" />
+                                 </columnConstraints>
+                                 <rowConstraints>
+                                    <RowConstraints vgrow="SOMETIMES" />
+                                    <RowConstraints vgrow="SOMETIMES" />
+                                 </rowConstraints>
+                                 <children>
+                                    <Slider fx:id="j2Slider" max="150.0" min="-150.0" onMouseDragged="#updateTextFieldValue" onMousePressed="#updateTextFieldValue" onMouseReleased="#sendData" showTickLabels="true" showTickMarks="true" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                                    <GridPane GridPane.rowIndex="1">
+                                       <columnConstraints>
+                                          <ColumnConstraints hgrow="SOMETIMES" percentWidth="25.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" percentWidth="25.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" percentWidth="25.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" percentWidth="25.0" />
+                                       </columnConstraints>
+                                       <rowConstraints>
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                       </rowConstraints>
+                                       <children>
+                                          <Button fx:id="j2Down" mnemonicParsing="false" onAction="#stepSliderValue" text="-" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                                          <Button fx:id="j2Up" mnemonicParsing="false" onAction="#stepSliderValue" text="+" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                                          <TextField fx:id="j2Step" alignment="CENTER" maxWidth="50.0" prefWidth="0.0" text="1" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                                          <TextField fx:id="j2Value" alignment="CENTER" maxWidth="50.0" onKeyPressed="#updateSliderValue" prefWidth="0.0" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                                       </children>
+                                    </GridPane>
+                                 </children>
+                              </GridPane>
+                              <Label layoutX="10.0" layoutY="71.0" text="J3" GridPane.rowIndex="2" />
+                              <GridPane layoutX="23.0" layoutY="60.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                 <columnConstraints>
+                                    <ColumnConstraints hgrow="SOMETIMES" />
+                                 </columnConstraints>
+                                 <rowConstraints>
+                                    <RowConstraints vgrow="SOMETIMES" />
+                                    <RowConstraints vgrow="SOMETIMES" />
+                                 </rowConstraints>
+                                 <children>
+                                    <Slider fx:id="j3Slider" max="162.0" min="-162.0" onMouseDragged="#updateTextFieldValue" onMousePressed="#updateTextFieldValue" onMouseReleased="#sendData" showTickLabels="true" showTickMarks="true" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                                    <GridPane GridPane.rowIndex="1">
+                                       <columnConstraints>
+                                          <ColumnConstraints hgrow="SOMETIMES" percentWidth="25.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" percentWidth="25.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" percentWidth="25.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" percentWidth="25.0" />
+                                       </columnConstraints>
+                                       <rowConstraints>
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                       </rowConstraints>
+                                       <children>
+                                          <Button fx:id="j3Down" mnemonicParsing="false" onAction="#stepSliderValue" text="-" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                                          <Button fx:id="j3Up" mnemonicParsing="false" onAction="#stepSliderValue" text="+" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                                          <TextField fx:id="j3Step" alignment="CENTER" maxWidth="50.0" prefWidth="0.0" text="1" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                                          <TextField fx:id="j3Value" alignment="CENTER" maxWidth="50.0" onKeyPressed="#updateSliderValue" prefWidth="0.0" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                                       </children>
+                                    </GridPane>
+                                 </children>
+                              </GridPane>
+                              <Label layoutX="10.0" layoutY="117.0" text="Z" GridPane.rowIndex="3" />
+                              <GridPane layoutX="23.0" layoutY="110.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                                 <columnConstraints>
+                                    <ColumnConstraints hgrow="SOMETIMES" />
+                                 </columnConstraints>
+                                 <rowConstraints>
+                                    <RowConstraints vgrow="SOMETIMES" />
+                                    <RowConstraints vgrow="SOMETIMES" />
+                                 </rowConstraints>
+                                 <children>
+                                    <Slider fx:id="zSlider" max="150.0" onMouseDragged="#updateTextFieldValue" onMousePressed="#updateTextFieldValue" onMouseReleased="#sendData" showTickLabels="true" showTickMarks="true" value="100.0" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                                    <GridPane GridPane.rowIndex="1">
+                                       <columnConstraints>
+                                          <ColumnConstraints hgrow="SOMETIMES" percentWidth="25.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" percentWidth="25.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" percentWidth="25.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" percentWidth="25.0" />
+                                       </columnConstraints>
+                                       <rowConstraints>
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                       </rowConstraints>
+                                       <children>
+                                          <Button fx:id="zDown" mnemonicParsing="false" onAction="#stepSliderValue" text="-" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                                          <Button fx:id="zUp" mnemonicParsing="false" onAction="#stepSliderValue" text="+" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                                          <TextField fx:id="zStep" alignment="CENTER" maxWidth="50.0" prefWidth="0.0" text="1" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                                          <TextField fx:id="zValue" alignment="CENTER" maxWidth="50.0" onKeyPressed="#updateSliderValue" prefWidth="0.0" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                                       </children>
+                                    </GridPane>
+                                 </children>
+                              </GridPane>
+                           </children>
+                        </GridPane>
+                     </children>
+                  </GridPane>
+                  <GridPane GridPane.columnIndex="2">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints vgrow="SOMETIMES" />
+                      <RowConstraints vgrow="SOMETIMES" />
+                      <RowConstraints vgrow="SOMETIMES" />
+                        <RowConstraints vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <GridPane>
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" vgrow="SOMETIMES" />
+                            <RowConstraints vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <children>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Cinematica inversa" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font>
+                              </Text>
+                              <GridPane GridPane.rowIndex="1">
+                                <columnConstraints>
+                                  <ColumnConstraints hgrow="SOMETIMES" />
+                                  <ColumnConstraints hgrow="SOMETIMES" />
+                                    <ColumnConstraints hgrow="SOMETIMES" />
+                                </columnConstraints>
+                                <rowConstraints>
+                                  <RowConstraints vgrow="SOMETIMES" />
+                                  <RowConstraints vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                </rowConstraints>
+                                 <GridPane.margin>
+                                    <Insets />
+                                 </GridPane.margin>
+                                 <children>
+                                    <TextField alignment="CENTER" maxWidth="50.0" text="365" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" fx:id="xCoord">
+                                       <GridPane.margin>
+                                          <Insets />
+                                       </GridPane.margin>
+                                    </TextField>
+                                    <TextField fx:id="yCoord" alignment="CENTER" maxWidth="50.0" text="0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                                       <GridPane.margin>
+                                          <Insets />
+                                       </GridPane.margin>
+                                    </TextField>
+                                    <TextField fx:id="zCoord" alignment="CENTER" maxWidth="50.0" text="100" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                                       <GridPane.margin>
+                                          <Insets />
+                                       </GridPane.margin>
+                                    </TextField>
+                                    <Label text="X" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                                    <Label text="Y" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                                    <Label text="Z" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                                    <Button fx:id="moveButton" mnemonicParsing="false" onAction="#automaticControl" text="Mover" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+                                 </children>
+                              </GridPane>
+                           </children>
+                        </GridPane>
+                        <GridPane layoutX="10.0" layoutY="10.0" GridPane.rowIndex="1">
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" vgrow="SOMETIMES" />
+                              <RowConstraints vgrow="SOMETIMES" />
+                           </rowConstraints>
+                           <children>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Apertura del Gripper" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font>
+                              </Text>
+                              <GridPane GridPane.rowIndex="1">
+                                 <columnConstraints>
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                                 </columnConstraints>
+                                 <rowConstraints>
+                                    <RowConstraints vgrow="SOMETIMES" />
+                                    <RowConstraints vgrow="SOMETIMES" />
+                                 </rowConstraints>
+                                 <children>
+                                    <Slider fx:id="gripperSlider" onMouseDragged="#updateTextFieldValue" onMousePressed="#updateTextFieldValue" onMouseReleased="#sendData" showTickLabels="true" showTickMarks="true" value="100.0" />
+                                    <GridPane GridPane.rowIndex="1">
+                                       <columnConstraints>
+                                          <ColumnConstraints hgrow="SOMETIMES" percentWidth="25.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" percentWidth="25.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" percentWidth="25.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" percentWidth="25.0" />
+                                       </columnConstraints>
+                                       <rowConstraints>
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                       </rowConstraints>
+                                       <children>
+                                          <Button fx:id="gripperDown" mnemonicParsing="false" onAction="#stepSliderValue" text="-" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                                          <Button fx:id="gripperUp" mnemonicParsing="false" onAction="#stepSliderValue" text="+" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                                          <TextField fx:id="gripperStep" alignment="CENTER" maxWidth="50.0" prefWidth="0.0" text="1" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                                          <TextField fx:id="gripperValue" alignment="CENTER" maxWidth="50.0" onKeyPressed="#updateSliderValue" prefWidth="0.0" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                                       </children>
+                                    </GridPane>
+                                 </children>
+                              </GridPane>
+                           </children>
+                        </GridPane>
+                        <GridPane layoutX="10.0" layoutY="10.0" GridPane.rowIndex="2">
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" vgrow="SOMETIMES" />
+                              <RowConstraints vgrow="SOMETIMES" />
+                           </rowConstraints>
+                           <children>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Guardar posiciones" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font>
+                              </Text>
+                              <GridPane GridPane.rowIndex="1">
+                                <columnConstraints>
+                                  <ColumnConstraints hgrow="SOMETIMES" />
+                                  <ColumnConstraints hgrow="SOMETIMES" />
+                                </columnConstraints>
+                                <rowConstraints>
+                                  <RowConstraints vgrow="SOMETIMES" />
+                                  <RowConstraints vgrow="SOMETIMES" />
+                                </rowConstraints>
+                                 <children>
+                                    <Button fx:id="saveButton" mnemonicParsing="false" onAction="#automaticControl" text="Guardar" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                                    <Button fx:id="startButton" mnemonicParsing="false" onAction="#automaticControl" text="Ejecutar" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                                    <Button fx:id="eraseButton" mnemonicParsing="false" onAction="#automaticControl" text="Borrar" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+                                 </children>
+                              </GridPane>
+                           </children>
+                        </GridPane>
+                        <GridPane GridPane.rowIndex="3">
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" />
+                            <ColumnConstraints hgrow="SOMETIMES" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" vgrow="SOMETIMES" />
+                            <RowConstraints vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <children>
+                              <GridPane GridPane.rowIndex="1">
+                                 <columnConstraints>
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                                 </columnConstraints>
+                                 <rowConstraints>
+                                    <RowConstraints vgrow="SOMETIMES" />
+                                    <RowConstraints vgrow="SOMETIMES" />
+                                 </rowConstraints>
+                                 <children>
+                                    <Slider fx:id="velSlider" majorTickUnit="1000.0" max="4000.0" minorTickCount="500" onMouseDragged="#updateTextFieldValue" onMousePressed="#updateTextFieldValue" onMouseReleased="#sendData" value="4000.0" />
+                                    <GridPane GridPane.rowIndex="1">
+                                       <columnConstraints>
+                                          <ColumnConstraints hgrow="SOMETIMES" percentWidth="25.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" percentWidth="25.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" percentWidth="25.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" percentWidth="25.0" />
+                                       </columnConstraints>
+                                       <rowConstraints>
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                       </rowConstraints>
+                                       <children>
+                                          <Button fx:id="velDown" mnemonicParsing="false" onAction="#stepSliderValue" text="-" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                                          <Button fx:id="velUp" mnemonicParsing="false" onAction="#stepSliderValue" text="+" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                                          <TextField fx:id="velStep" alignment="CENTER" maxWidth="50.0" prefWidth="0.0" text="1" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                                          <TextField fx:id="velValue" alignment="CENTER" maxWidth="50.0" onKeyPressed="#updateSliderValue" prefWidth="0.0" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                                       </children>
+                                    </GridPane>
+                                 </children>
+                              </GridPane>
+                              <GridPane GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                 <columnConstraints>
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                                 </columnConstraints>
+                                 <rowConstraints>
+                                    <RowConstraints vgrow="SOMETIMES" />
+                                    <RowConstraints vgrow="SOMETIMES" />
+                                 </rowConstraints>
+                                 <children>
+                                    <Slider fx:id="accelSlider" majorTickUnit="1000.0" max="2000.0" min="1000.0" minorTickCount="500" onMouseDragged="#updateTextFieldValue" onMousePressed="#updateTextFieldValue" onMouseReleased="#sendData" value="2000.0" />
+                                    <GridPane GridPane.rowIndex="1">
+                                       <columnConstraints>
+                                          <ColumnConstraints hgrow="SOMETIMES" percentWidth="25.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" percentWidth="25.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" percentWidth="25.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" percentWidth="25.0" />
+                                       </columnConstraints>
+                                       <rowConstraints>
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                       </rowConstraints>
+                                       <children>
+                                          <Button fx:id="accelDown" mnemonicParsing="false" onAction="#stepSliderValue" text="-" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                                          <Button fx:id="accelUp" mnemonicParsing="false" onAction="#stepSliderValue" text="+" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                                          <TextField fx:id="accelStep" alignment="CENTER" maxWidth="50.0" prefWidth="0.0" text="1" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                                          <TextField fx:id="accelValue" alignment="CENTER" maxWidth="50.0" onKeyPressed="#updateSliderValue" prefWidth="0.0" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                                       </children>
+                                    </GridPane>
+                                 </children>
+                              </GridPane>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Velocidad" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font>
+                              </Text>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Aceleracion" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </GridPane>
+                     </children>
+                  </GridPane>
+               </children>
+            </GridPane>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Control SCARA" textAlignment="CENTER" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+               <font>
+                  <Font size="20.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets bottom="10.0" />
+               </GridPane.margin>
+            </Text>
+         </children>
+      </GridPane>
+   </children>
+</AnchorPane>
