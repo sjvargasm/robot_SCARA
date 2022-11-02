@@ -2,7 +2,6 @@ package org.svm.gui;
 
 import org.svm.scaraKinematicsCalculator.Calculator;
 import org.svm.serialMessenger.*;
-
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -22,9 +21,7 @@ class SliderControl {
         this.stepTextField = step;
         this.stepUpButton = stepUp;
         this.stepDownButton = stepDown;
-
         valueTextField.setText(Math.round(slider.getValue()) + "");
-
     }
 
     public void syncTextAndValue(Class<?> whoChanged) {
@@ -35,7 +32,6 @@ class SliderControl {
             this.valueTextField.setText(String.valueOf(this.slider.getValue()));
         }
     }
-
 }
 
 public class Controlador {
@@ -114,7 +110,6 @@ public class Controlador {
                 startButton.setText("Ejecutar");
                 break;
         }
-
         sendData(saveStatus, executionStatus);
     }
 

@@ -62,5 +62,4 @@ public class Calculator {
         jValue[3] = coord[2];
         return jValue;
     }
-
 }

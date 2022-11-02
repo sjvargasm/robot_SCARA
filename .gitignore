@@ -1,3 +1,8 @@
+.settings/org.eclipse.jdt.core.prefs
+.vscode/arduino.json
+.vscode/c_cpp_properties.json
+.vscode/launch.json
+.vscode/settings.json
 Software/Firmware/output/build.options.json
 Software/Firmware/output/firmware.ino.eep
 Software/Firmware/output/firmware.ino.elf
@@ -79,9 +84,5 @@ Software/Firmware/output/sketch/definitions.h
 Software/Firmware/output/sketch/firmware.ino.cpp
 Software/Firmware/output/sketch/firmware.ino.cpp.d
 Software/Firmware/output/sketch/firmware.ino.cpp.o
-.vscode/arduino.json
-.vscode/c_cpp_properties.json
-.vscode/launch.json
-.vscode/settings.json
-.settings/org.eclipse.jdt.core.prefs
 TODO
+Calculos de constantes.txt
