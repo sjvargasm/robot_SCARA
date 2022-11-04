@@ -1,5 +1,3 @@
-package org.svm.serialMessenger;
-
 import com.fazecast.jSerialComm.SerialPort;
 
 public class SerialMessenger {
@@ -13,6 +11,8 @@ public class SerialMessenger {
                 datos += ",";
             }
         }
+
+        datos += "\n";
 
         if (!testMode) {
             try {

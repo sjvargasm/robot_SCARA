@@ -1,75 +1,38 @@
 #include <AccelStepper.h>
 #include <Servo.h>
 #include <math.h>
-#include "definitions.h"
+#include "Definitions.h"
 
+// Definiciones de pines
 const byte
-    // Número de steppers
     nSteppers = 4,
-
-    // Pines finales de carrera
-    limitSwtich[nSteppers] = {11, 10, 9, A3},
-
-    // Pines de paso
+    limitSwtich[nSteppers]  = {11, 10, 9, A3},
     stepper_Step[nSteppers] = {2, 3, 4, 12},
-
-    // Pines de dirección
-    stepper_Dir[nSteppers] = {5, 6, 7, 13},
-
-    // Pin del gripper
+    stepper_Dir[nSteppers]  = {5, 6, 7, 13},
     gripperPin = A0;
 
+// Configuraciones
 const int
-    // Valores de velocidad máxima
-    stepper_maxSpeedVal[nSteppers] = {200, 600, 600, 600},
+    stepper_maxSpeedVal[nSteppers]        = {200, 600, 600, 600},
+    stepper_accelVal[nSteppers]           = {2000, 2000, 2000, 2000},
+    stepper_maxPosition[nSteppers]        = {500, 500, 500, 17000},
+    stepper_startingPosition[nSteppers]   = {0, 0, 0, 10000},
+    stepper_homingSpeed[nSteppers]        = {200, 900, 700, 1000},
 
-    // Valores de aceleración
-    stepper_accelVal[nSteppers] = {2000, 2000, 2000, 2000},
-
-    // Posiciones máximas de las articulaciones
-    stepper_maxPosition[nSteppers] = {17000, -1662, -5420, -3955},
-
-    // Posiciones iniciales de las articulaciones
-    stepper_startingPosition[nSteppers] = {10000, 0, 0, 0},
-
-    // Velocidades de homing de steppers
-    stepper_homingSpeed[nSteppers] = {1500, -1100, -1300, -1200},
-
-    // Valor máximo de apertura de gripper
     gripper_maxPosition = 180,
-
-    // PWM mínimo para gripper
     gripper_min = 600,
-
-    // PWM máximo para gripper
     gripper_max = 2500;
 
-// Factores de conversión de ángulos a pasos de stepper
-const float factor[nSteppers] = {44.444444, 35.555555, 10, 100};
-
-// Tipos de finales de carrera
-const boolean limitSwitchType[nSteppers] = {NO, NO, NO, NO};
-
-// Array de objetos steppers
+const float factor[nSteppers]             = {44.444444, 35.555556, 8.888889, 100};
+const boolean limitSwitchType[nSteppers]  = {NO, NO, NO, NO};
 AccelStepper *stepper = new AccelStepper[nSteppers];
-
-// Objeto gripper
 Servo gripper;
 
 int
-    // Posicion del stepper
     stepper_position[nSteppers],
-
-    // Índice de stepper
     xStepper,
-
-    // Tabla de poses
     pose[5][100],
-
-    // Contador de poses
     positionsCounter = 0,
-
-    // Datos procesados del puerto serial
     data[10];
 /**
  * data[0] = Estado del botón GUARDAR

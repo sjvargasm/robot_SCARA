@@ -1,10 +1,8 @@
 # 22w44b
-Agregado GUI y archivos relacionados a la distribución al público (Licencia, Léame, y este Changelog)
+Ahora con GUI! :tada:
 ## Software
-### Changes
-- Agregados archivos License, Readme y Changelog
-- GUI funcional :tada:
-- Reorganizado estructura de archivos
+### Cambios
+- GUI funcional (Puede presentar errores)
 ### Librerias
 #### Java
 - jSerialComm 2.9.2

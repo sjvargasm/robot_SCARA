@@ -1,7 +1,3 @@
-package org.svm.gui;
-
-import org.svm.scaraKinematicsCalculator.Calculator;
-import org.svm.serialMessenger.*;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -56,6 +52,7 @@ public class Controlador {
     @FXML
     public TextField xCoord, yCoord, zCoord;
 
+    private double[] dimensiones = { 228, 136.5 };
     private SliderControl[] sliders = new SliderControl[7];
     private static int saveStatus = 0, executionStatus = 0;
 
@@ -170,6 +167,7 @@ public class Controlador {
         SerialMessenger.send(datos, "/dev/ttyUSB0", false);
     }
 
+    // FIXME: Menos overloads
     private SliderControl getController(Slider slider) {
         SliderControl sliderReturn = new SliderControl(new Slider(), new TextField(), new TextField(), new Button(),
                 new Button());
@@ -204,15 +202,11 @@ public class Controlador {
                         Double.valueOf(xCoord.getText()),
                         Double.valueOf(yCoord.getText()),
                         Double.valueOf(zCoord.getText()) },
-                new double[] {
-                        228,
-                        136.5
-                });
+                dimensiones);
         for (int i = 0; i < 4; i++) {
             sliders[i].slider.setValue(joints[i]);
             sliders[i].syncTextAndValue(sliders[i].getClass());
         }
-
     }
 
     private void updateCoords() {
@@ -223,10 +217,7 @@ public class Controlador {
                         sliders[2].slider.getValue(),
                         sliders[3].slider.getValue()
                 },
-                new double[] {
-                        228,
-                        136.5
-                });
+                dimensiones);
         xCoord.setText(String.valueOf(coords[0]));
         yCoord.setText(String.valueOf(coords[1]));
         zCoord.setText(String.valueOf(coords[2]));

@@ -1,5 +1,3 @@
-package org.svm.scaraKinematicsCalculator;
-
 public class Calculator {
     public static double[] directKinematics(double[] jValue, double[] L) {
         double[] coord = new double[3];
@@ -15,7 +13,6 @@ public class Calculator {
         return coord;
     }
 
-
     // FIXME: What is happening here
     public static double[] inverseKinematics(double[] coord, double[] L) {
         double[] jValue = new double[4];
@@ -27,7 +24,7 @@ public class Calculator {
         jValue[0] = Math.atan(coord[0] / coord[1])
                 - Math.atan((L[1] * Math.sin(jValue[1])) / (L[0] + L[1] * Math.cos(jValue[1])));
         jValue[0] = jValue[0] * 180 / Math.PI;
-        
+
         if (coord[0] >= 0 & coord[1] >= 0) {
             jValue[0] = 90 - jValue[0];
         }
@@ -35,7 +32,7 @@ public class Calculator {
         if (coord[0] < 0 && coord[1] > 0) {
             jValue[0] = 90 - jValue[0];
         }
-        
+
         if (coord[0] < 0 && coord[1] < 0) {
             jValue[0] = 270 - jValue[0];
             jValue[2] = (-1) * (270 - jValue[0] - jValue[1]);
@@ -45,7 +42,7 @@ public class Calculator {
             jValue[0] = -90 - jValue[0];
         }
 
-        if(coord[0] < 0 && coord[1] == 0 ) {
+        if (coord[0] < 0 && coord[1] == 0) {
             jValue[0] = 270 + jValue[0];
         }
 
@@ -55,7 +52,7 @@ public class Calculator {
             jValue[2] = 270 - jValue[0] - jValue[1];
         }
 
-        if(Math.abs(jValue[2]) > 165) {
+        if (Math.abs(jValue[2]) > 165) {
             jValue[2] = 180 + jValue[2];
         }
 

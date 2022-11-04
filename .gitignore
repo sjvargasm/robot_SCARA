@@ -1,14 +1,9 @@
-.settings/org.eclipse.jdt.core.prefs
-.vscode/arduino.json
-.vscode/c_cpp_properties.json
-.vscode/launch.json
-.vscode/settings.json
 Software/Firmware/output/build.options.json
-Software/Firmware/output/firmware.ino.eep
-Software/Firmware/output/firmware.ino.elf
-Software/Firmware/output/firmware.ino.hex
-Software/Firmware/output/firmware.ino.with_bootloader.bin
-Software/Firmware/output/firmware.ino.with_bootloader.hex
+Software/Firmware/output/Firmware.ino.eep
+Software/Firmware/output/Firmware.ino.elf
+Software/Firmware/output/Firmware.ino.hex
+Software/Firmware/output/Firmware.ino.with_bootloader.bin
+Software/Firmware/output/Firmware.ino.with_bootloader.hex
 Software/Firmware/output/includes.cache
 Software/Firmware/output/core/abi.cpp.d
 Software/Firmware/output/core/abi.cpp.o
@@ -80,9 +75,21 @@ Software/Firmware/output/libraries/Servo/samd/Servo.cpp.o
 Software/Firmware/output/libraries/Servo/stm32f4/Servo.cpp.d
 Software/Firmware/output/libraries/Servo/stm32f4/Servo.cpp.o
 Software/Firmware/output/preproc/ctags_target_for_gcc_minus_e.cpp
-Software/Firmware/output/sketch/definitions.h
-Software/Firmware/output/sketch/firmware.ino.cpp
-Software/Firmware/output/sketch/firmware.ino.cpp.d
-Software/Firmware/output/sketch/firmware.ino.cpp.o
-TODO
+Software/Firmware/output/sketch/Definitions.h
+Software/Firmware/output/sketch/Firmware.ino.cpp
+Software/Firmware/output/sketch/Firmware.ino.cpp.d
+Software/Firmware/output/sketch/Firmware.ino.cpp.o
+.vscode/arduino.json
+.vscode/c_cpp_properties.json
+.vscode/launch.json
+.vscode/settings.json
+.settings/org.eclipse.jdt.core.prefs
 Calculos de constantes.txt
+TODO
+Knowledge/SCARA/Calculos de constantes de proporción.md
+Knowledge/SCARA/Untitled.md
+Knowledge/SCARA/.obsidian/app.json
+Knowledge/SCARA/.obsidian/appearance.json
+Knowledge/SCARA/.obsidian/core-plugins.json
+Knowledge/SCARA/.obsidian/hotkeys.json
+Knowledge/SCARA/.obsidian/workspace.json

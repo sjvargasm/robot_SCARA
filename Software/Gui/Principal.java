@@ -15,7 +15,7 @@ public class Principal extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("src/gui.fxml"));
         Scene scene = new Scene(root);
         stage.setScene(scene);
-        stage.getIcons().add(new Image("file:Software/Gui/assets/robot.png"));
+        stage.getIcons().add(new Image("file:Software/Gui/src/robot.png"));
         stage.initStyle(StageStyle.UNDECORATED);
         stage.setFullScreen(true);
         stage.setFullScreenExitHint("");
