@@ -1,6 +1,7 @@
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Control;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
@@ -47,14 +48,15 @@ public class Controlador {
     public Button j1Down, j2Down, j3Down, zDown, gripperDown, velDown, accelDown;
 
     @FXML
-    public Button saveButton, startButton, eraseButton, moveButton;
+    public Button saveButton, startButton, eraseButton, moveButton, setPortButton;
 
     @FXML
-    public TextField xCoord, yCoord, zCoord;
+    public TextField xCoord, yCoord, zCoord, portTextField;
 
     private double[] dimensiones = { 228, 136.5 };
     private SliderControl[] sliders = new SliderControl[7];
     private static int saveStatus = 0, executionStatus = 0;
+    private String portDescriptor;
 
     @FXML
     public void initialize() {
@@ -65,6 +67,7 @@ public class Controlador {
         sliders[4] = new SliderControl(gripperSlider, gripperValue, gripperStep, gripperUp, gripperDown);
         sliders[5] = new SliderControl(velSlider, velValue, velStep, velUp, velDown);
         sliders[6] = new SliderControl(accelSlider, accelValue, accelStep, accelUp, accelDown);
+        setPort();
         updateCoords();
         sendData(0, 0);
     }
@@ -152,47 +155,54 @@ public class Controlador {
         sendData(0, 0);
     }
 
+    /**
+     * 
+     */
+    @FXML
+    public void setPort() {
+        portDescriptor = portTextField.getText();
+        sendData(0, 0);
+    }
+
+    @FXML
+    public void setPortOnKey(KeyEvent event) {
+        if(event.getCode() == KeyCode.ENTER) {
+            setPort();
+        }
+    }
+
     private void sendData(int save, int execution) {
-        int[] datos = {
+        double[] datos = {
                 save,
                 execution,
-                (int) j1Slider.getValue(),
-                (int) j2Slider.getValue(),
-                (int) j3Slider.getValue(),
-                (int) zSlider.getValue(),
-                (int) gripperSlider.getValue(),
-                (int) velSlider.getValue(),
-                (int) accelSlider.getValue()
+                Math.round(j1Slider.getValue()),
+                Math.round(j2Slider.getValue()),
+                Math.round(j3Slider.getValue()),
+                Math.round(zSlider.getValue()),
+                Math.round(gripperSlider.getValue()),
+                Math.round(velSlider.getValue()),
+                Math.round(accelSlider.getValue())
         };
-        SerialMessenger.send(datos, "/dev/ttyUSB0", false);
+        SerialMessenger.send(datos, portDescriptor, false);
     }
 
-    // FIXME: Menos overloads
-    private SliderControl getController(Slider slider) {
-        SliderControl sliderReturn = new SliderControl(new Slider(), new TextField(), new TextField(), new Button(),
+    private SliderControl getController(Control controller) {
+        SliderControl sliderReturn = new SliderControl(new Slider(), new TextField(),
+                new TextField(), new Button(),
                 new Button());
-        for (int i = 0; i < sliders.length; i++)
-            if (slider.getId() == sliders[i].slider.getId())
-                sliderReturn = sliders[i];
-        return sliderReturn;
-    }
+        String sliderId, valueId, stepUpId, stepDownId, controllerId = controller.getId();
 
-    private SliderControl getController(TextField textField) {
-        SliderControl sliderReturn = new SliderControl(new Slider(), new TextField(), new TextField(), new Button(),
-                new Button());
-        for (int i = 0; i < sliders.length; i++)
-            if (textField.getId() == sliders[i].valueTextField.getId())
-                sliderReturn = sliders[i];
-        return sliderReturn;
-    }
-
-    private SliderControl getController(Button button) {
-        SliderControl sliderReturn = new SliderControl(new Slider(), new TextField(), new TextField(), new Button(),
-                new Button());
-        for (int i = 0; i < sliders.length; i++)
-            if (button.getId() == sliders[i].stepUpButton.getId()
-                    || button.getId() == sliders[i].stepDownButton.getId())
-                sliderReturn = sliders[i];
+        for (SliderControl slider : sliders) {
+            sliderId = slider.slider.getId();
+            valueId = slider.valueTextField.getId();
+            stepUpId = slider.stepUpButton.getId();
+            stepDownId = slider.stepDownButton.getId();
+            if (controllerId == sliderId ||
+                    controllerId == valueId ||
+                    controllerId == stepUpId ||
+                    controllerId == stepDownId)
+                sliderReturn = slider;
+        }
         return sliderReturn;
     }
 

@@ -16,9 +16,10 @@ public class Principal extends Application {
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.getIcons().add(new Image("file:Software/Gui/src/robot.png"));
+        stage.setTitle("SCARA Control Panel");
         stage.initStyle(StageStyle.UNDECORATED);
-        stage.setFullScreen(true);
-        stage.setFullScreenExitHint("");
+        // stage.setFullScreen(true);
+        // stage.setFullScreenExitHint("");
         stage.show();
     }
 

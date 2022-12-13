@@ -6,34 +6,34 @@
 // Definiciones de pines
 const byte
     nSteppers = 4,
-    limitSwtich[nSteppers]  = {11, 10, 9, A3},
+    limitSwtich[nSteppers] = {11, 10, 9, A3},
     stepper_Step[nSteppers] = {2, 3, 4, 12},
-    stepper_Dir[nSteppers]  = {5, 6, 7, 13},
+    stepper_Dir[nSteppers] = {5, 6, 7, 13},
     gripperPin = A0;
 
 // Configuraciones
 const int
-    stepper_maxSpeedVal[nSteppers]        = {200, 600, 600, 600},
-    stepper_accelVal[nSteppers]           = {2000, 2000, 2000, 2000},
-    stepper_maxPosition[nSteppers]        = {500, 500, 500, 17000},
-    stepper_startingPosition[nSteppers]   = {0, 0, 0, 10000},
-    stepper_homingSpeed[nSteppers]        = {200, 900, 700, 1000},
+    stepper_maxSpeedVal[nSteppers] = {200, 600, 600, 600},
+    stepper_accelVal[nSteppers] = {2000, 2000, 2000, 2000},
+    stepper_maxPosition[nSteppers] = {2000, -6500, 0, 17000},
+    stepper_startingPosition[nSteppers] = {0, 0, 0, 10000},
+    stepper_homingSpeed[nSteppers] = {-2000, -2000, -2000, 2000},
 
     gripper_maxPosition = 180,
     gripper_min = 600,
     gripper_max = 2500;
 
-const float factor[nSteppers]             = {44.444444, 35.555556, 8.888889, 100};
-const boolean limitSwitchType[nSteppers]  = {NO, NO, NO, NO};
+const float factor[nSteppers] = {44.444444, 35.555556, 8.888889, 100};
+const boolean limitSwitchType[nSteppers] = {NO, NO, NO, NO};
+
 AccelStepper *stepper = new AccelStepper[nSteppers];
 Servo gripper;
-
+long targetPosition[nSteppers];
 int
-    stepper_position[nSteppers],
     xStepper,
     pose[5][100],
     positionsCounter = 0,
-    data[10];
+    data[10] = {0, 0, 0, 0, 0, 100, 180, 2000, 2000};
 /**
  * data[0] = Estado del botón GUARDAR
  * data[1] = Estado del boton EJECUTAR
@@ -55,13 +55,10 @@ void setup()
   for (xStepper = 0; xStepper < nSteppers; xStepper++)
   {
     // Fin de carrera asociado
-    pinMode(limitSwtich[xStepper],
-            limitSwitchType[xStepper] == NO ? INPUT_PULLUP : INPUT);
+    pinMode(limitSwtich[xStepper], limitSwitchType[xStepper] == NO ? INPUT_PULLUP : INPUT);
 
     // Inicialización objeto stepper
-    stepper[xStepper] = AccelStepper(AccelStepper::DRIVER,
-                                     stepper_Step[xStepper],
-                                     stepper_Dir[xStepper]);
+    stepper[xStepper] = AccelStepper(AccelStepper::DRIVER, stepper_Step[xStepper], stepper_Dir[xStepper]);
     stepper[xStepper].setMaxSpeed(stepper_maxSpeedVal[xStepper]);
     stepper[xStepper].setAcceleration(stepper_accelVal[xStepper]);
   }
@@ -76,24 +73,25 @@ void loop()
 {
   // Al inicial un ciclo, leer puerto Serial, si hay algún dato nuevo
   if (Serial.available())
+  {
     readSerial();
 
-  // Verificar estado de guardado
-  // Si data[0] == 0, nada
-  if (data[SAVE] == 1) // Si 1, guardar
-  {
-    for (xStepper = 0; xStepper < nSteppers; xStepper++)
-      pose[xStepper][positionsCounter] = data[xStepper + 2] *
-                                         factor[xStepper];
-    pose[GRIPPER][positionsCounter] = data[DGRIPPER];
-    positionsCounter++;
-  }
-  else if (data[SAVE] == 2) // Si 2, borrar
-  {
-    for (xStepper = 0; xStepper < nSteppers; xStepper++)
-      memset(pose[xStepper], 0, sizeof(pose[xStepper]));
-    memset(pose[GRIPPER], 0, sizeof(pose[GRIPPER]));
-    positionsCounter = 0;
+    // Verificar estado de guardado
+    // Si data[0] == 0, nada
+    if (data[SAVE] == 1) // Si 1, guardar
+    {
+      for (xStepper = 0; xStepper < nSteppers; xStepper++)
+        pose[xStepper][positionsCounter] = data[xStepper + 2] * factor[xStepper];
+      pose[GRIPPER][positionsCounter] = data[DGRIPPER];
+      positionsCounter++;
+    }
+    else if (data[SAVE] == 2) // Si 2, borrar
+    {
+      for (xStepper = 0; xStepper < nSteppers; xStepper++)
+        memset(pose[xStepper], 0, sizeof(pose[xStepper]));
+      memset(pose[GRIPPER], 0, sizeof(pose[GRIPPER]));
+      positionsCounter = 0;
+    }
   }
 
   // Verificar estado de ejecución
@@ -110,10 +108,10 @@ void loop()
       // 1. Mover steppers
       for (xStepper = 0; xStepper < nSteppers; xStepper++)
       {
-        stepper_position[xStepper] = pose[xStepper][nPose];
-        stepper[xStepper].moveTo(stepper_position[xStepper]);
+        targetPosition[xStepper] = pose[xStepper][nPose];
+        stepper[xStepper].moveTo(targetPosition[xStepper]);
       }
-      runSteppers(stepper_position);
+      runSteppers(targetPosition);
 
       // 2. Abrir gripper (Solo si su valor cambió)
       if (nPose == 0)
@@ -135,25 +133,60 @@ void loop()
     }
   }
 
-  // Si el estado de ejecución == 0. Mover a la posición especificada desde
-  // Serial
-  for (xStepper = 0; xStepper < nSteppers; xStepper++)
+  // // Si el estado de ejecución == 0. Mover a la posición especificada desde
+  // // Serial
+  // for (xStepper = 0; xStepper < nSteppers; xStepper++)
+  // {
+  //   targetPosition[xStepper] = data[xStepper + 2] * factor[xStepper];
+  //   stepper[xStepper].moveTo(targetPosition[xStepper]);
+  // }
+  // setSpeedAccel();
+  // runSteppers(targetPosition);
+
+  targetPosition[0] = data[2] * factor[0];
+  targetPosition[1] = data[3] * factor[1];
+  targetPosition[2] = data[4] * factor[2];
+  targetPosition[3] = data[5] * factor[3];
+
+  stepper[0].setSpeed(data[7]);
+  stepper[1].setSpeed(data[7]);
+  stepper[2].setSpeed(data[7]);
+  stepper[3].setSpeed(data[7]);
+
+  stepper[0].setAcceleration(data[8]);
+  stepper[1].setAcceleration(data[8]);
+  stepper[2].setAcceleration(data[8]);
+  stepper[3].setAcceleration(data[8]);
+
+  stepper[0].moveTo(targetPosition[0]);
+  stepper[1].moveTo(targetPosition[1]);
+  stepper[2].moveTo(targetPosition[2]);
+  stepper[3].moveTo(targetPosition[3]);
+
+  while (stepper[0].currentPosition() != targetPosition[0] ||
+         stepper[1].currentPosition() != targetPosition[1] ||
+         stepper[2].currentPosition() != targetPosition[2] ||
+         stepper[3].currentPosition() != targetPosition[3])
   {
-    stepper_position[xStepper] = data[xStepper + 2] * factor[xStepper];
-    stepper[xStepper].moveTo(stepper_position[xStepper]);
+    stepper[0].run();
+    stepper[1].run();
+    stepper[2].run();
+    stepper[3].run();
   }
-  setSpeedAccel();
-  runSteppers(stepper_position);
+
   delay(100);
   gripper.write(data[DGRIPPER]);
   delay(300);
 }
 
+/**
+ * Sitúa al robot en su posición incial (Home)
+ */
 void homing()
 {
   for (xStepper = 0; xStepper < nSteppers; xStepper++)
   {
-    while (digitalRead(limitSwtich[xStepper] == HIGH))
+    while (digitalRead(limitSwtich[xStepper]) == HIGH)
     {
       stepper[xStepper].setSpeed(stepper_homingSpeed[xStepper]);
       stepper[xStepper].runSpeed();
@@ -161,23 +194,28 @@ void homing()
     }
     delay(20);
     stepper[xStepper].moveTo(stepper_startingPosition[xStepper]);
-    while (stepper[xStepper].currentPosition() !=
-           stepper_startingPosition[xStepper])
+    while (stepper[xStepper].currentPosition() != stepper_startingPosition[xStepper])
       stepper[xStepper].run();
   }
 }
 
+/**
+ * Lee los valores del puerto Serial
+ */
 void readSerial()
 {
   String content = Serial.readString();
   for (int j = 0; j < sizeof(data) / sizeof(data[0]); j++)
   {
     int commaIndex = content.indexOf(",");
-    data[j] = atol(content.substring(0, commaIndex).c_str());
+    data[j] = atoi(content.substring(0, commaIndex).c_str());
     content = content.substring(commaIndex + 1);
   }
 }
 
+/**
+ * Configura la velocidad y aceleración de las articulaciones del robot
+ */
 void setSpeedAccel()
 {
   for (xStepper = 0; xStepper < nSteppers; xStepper++)
@@ -187,7 +225,11 @@ void setSpeedAccel()
   }
 }
 
-void runSteppers(int *target)
+/**
+ * Mueve los steppers hasta la posición indicada
+ * @param targetPosition Array de posiciones en pasos de los steppers
+ */
+void runSteppers(long *targetPosition)
 {
   boolean runningFlag = true;
   while (runningFlag)
@@ -195,10 +237,9 @@ void runSteppers(int *target)
     runningFlag = false;
     for (xStepper = 0; xStepper < nSteppers; xStepper++)
     {
-      if (stepper[xStepper].currentPosition() != target[xStepper])
+      if (stepper[xStepper].currentPosition() != targetPosition[xStepper])
       {
-        stepper[xStepper].run();
-        runningFlag = true;
+        runningFlag = stepper[xStepper].run();
       }
     }
   }
