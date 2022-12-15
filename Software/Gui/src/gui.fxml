@@ -295,38 +295,6 @@
                               </GridPane>
                            </children>
                         </GridPane>
-                        <GridPane layoutX="10.0" layoutY="10.0" GridPane.rowIndex="2">
-                           <columnConstraints>
-                              <ColumnConstraints hgrow="SOMETIMES" />
-                           </columnConstraints>
-                           <rowConstraints>
-                              <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" vgrow="SOMETIMES" />
-                              <RowConstraints vgrow="SOMETIMES" />
-                           </rowConstraints>
-                           <children>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Guardar posiciones" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
-                                 <font>
-                                    <Font size="20.0" />
-                                 </font>
-                              </Text>
-                              <GridPane GridPane.rowIndex="1">
-                                <columnConstraints>
-                                  <ColumnConstraints hgrow="SOMETIMES" />
-                                  <ColumnConstraints hgrow="SOMETIMES" />
-                                </columnConstraints>
-                                <rowConstraints>
-                                  <RowConstraints vgrow="SOMETIMES" />
-                                  <RowConstraints vgrow="SOMETIMES" />
-                                </rowConstraints>
-                                 <children>
-                                    <Button fx:id="saveButton" mnemonicParsing="false" onAction="#automaticControl" text="Guardar" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
-                                    <Button fx:id="startButton" mnemonicParsing="false" onAction="#automaticControl" text="Ejecutar" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
-                                    <Button fx:id="eraseButton" mnemonicParsing="false" onAction="#automaticControl" text="Borrar" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
-                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
-                                 </children>
-                              </GridPane>
-                           </children>
-                        </GridPane>
                         <GridPane GridPane.rowIndex="3">
                           <columnConstraints>
                             <ColumnConstraints hgrow="SOMETIMES" />

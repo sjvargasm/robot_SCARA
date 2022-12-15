@@ -73,75 +73,7 @@ void loop()
 {
   // Al inicial un ciclo, leer puerto Serial, si hay algún dato nuevo
   if (Serial.available())
-  {
     readSerial();
-
-    // Verificar estado de guardado
-    // Si data[0] == 0, nada
-    if (data[SAVE] == 1) // Si 1, guardar
-    {
-      for (xStepper = 0; xStepper < nSteppers; xStepper++)
-        pose[xStepper][positionsCounter] = data[xStepper + 2] * factor[xStepper];
-      pose[GRIPPER][positionsCounter] = data[DGRIPPER];
-      positionsCounter++;
-    }
-    else if (data[SAVE] == 2) // Si 2, borrar
-    {
-      for (xStepper = 0; xStepper < nSteppers; xStepper++)
-        memset(pose[xStepper], 0, sizeof(pose[xStepper]));
-      memset(pose[GRIPPER], 0, sizeof(pose[GRIPPER]));
-      positionsCounter = 0;
-    }
-  }
-
-  // Verificar estado de ejecución
-  while (data[RUN] == 1)
-  {
-    setSpeedAccel();
-
-    // Ejecutar poses guardadas
-    for (int nPose = 0; nPose < positionsCounter; nPose++)
-    {
-      if (data[RUN] == 0)
-        break;
-
-      // 1. Mover steppers
-      for (xStepper = 0; xStepper < nSteppers; xStepper++)
-      {
-        targetPosition[xStepper] = pose[xStepper][nPose];
-        stepper[xStepper].moveTo(targetPosition[xStepper]);
-      }
-      runSteppers(targetPosition);
-
-      // 2. Abrir gripper (Solo si su valor cambió)
-      if (nPose == 0)
-        gripper.write(pose[GRIPPER][nPose]);
-      else if (pose[GRIPPER][nPose] != pose[GRIPPER][nPose - 1])
-      {
-        gripper.write(pose[GRIPPER][nPose]);
-        delay(800);
-      }
-
-      // 3. Verificar cambios en velocidad, aceleración o ejecución
-      if (Serial.available())
-      {
-        readSerial();
-        if (data[RUN] == 0)
-          break;
-        setSpeedAccel();
-      }
-    }
-  }
-
-  // // Si el estado de ejecución == 0. Mover a la posición especificada desde
-  // // Serial
-  // for (xStepper = 0; xStepper < nSteppers; xStepper++)
-  // {
-  //   targetPosition[xStepper] = data[xStepper + 2] * factor[xStepper];
-  //   stepper[xStepper].moveTo(targetPosition[xStepper]);
-  // }
-  // setSpeedAccel();
-  // runSteppers(targetPosition);
 
   targetPosition[0] = data[2] * factor[0];
   targetPosition[1] = data[3] * factor[1];
@@ -210,37 +142,5 @@ void readSerial()
     int commaIndex = content.indexOf(",");
     data[j] = atoi(content.substring(0, commaIndex).c_str());
     content = content.substring(commaIndex + 1);
-  }
-}
-
-/**
- * Configura la velocidad y aceleración de las articulaciones del robot
- */
-void setSpeedAccel()
-{
-  for (xStepper = 0; xStepper < nSteppers; xStepper++)
-  {
-    stepper[xStepper].setSpeed(data[SPEED]);
-    stepper[xStepper].setAcceleration(data[ACCEL]);
-  }
-}
-
-/**
- * Mueve los steppers hasta la posición indicada
- * @param targetPosition Array de posiciones en pasos de los steppers
- */
-void runSteppers(long *targetPosition)
-{
-  boolean runningFlag = true;
-  while (runningFlag)
-  {
-    runningFlag = false;
-    for (xStepper = 0; xStepper < nSteppers; xStepper++)
-    {
-      if (stepper[xStepper].currentPosition() != targetPosition[xStepper])
-      {
-        runningFlag = stepper[xStepper].run();
-      }
-    }
   }
 }
