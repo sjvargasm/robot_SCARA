@@ -9,7 +9,7 @@
 $$
 	\rot{\alpha} = \begin{bmatrix}
 	\cos\alpha & -\sin\alpha & 0 \\
-	\sin\alpha & \cos\alpha & 0 \\
+	\sin\alpha & \cos\alpha & 0 \\z
 	0 & 0 & 1
 	\end{bmatrix}
 $$
@@ -39,8 +39,7 @@ $$
 	\end{align}
 $$
 # Cinemática inversa
-Aplicando el teorema de los cosenos sobre el t
-riángulo $\triangle L_1 L_2 \overline{OJ_3}$, se obtiene
+Aplicando el teorema de los cosenos sobre el triángulo $\triangle L_1 L_2 \overline{OJ_3}$, se obtiene
 $$
 \begin{align}
 	\overline{OJ_3}^2 &= L_1^2 + L_2^2 - 2L_1L_2\cos{\left (\pi - \theta_2 \right )} \\

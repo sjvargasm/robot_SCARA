@@ -1,3 +1,11 @@
+# RC-1
+Candidato final de entrega!
+## Software
+### Cambios
+- Parche sobre comunicación Serial. Ahora sí nos hace caso.
+
+---
+
 # 22w44b
 Ahora con GUI! :tada:
 ## Software

@@ -18,8 +18,8 @@ public class Principal extends Application {
         stage.getIcons().add(new Image("file:Software/Gui/src/robot.png"));
         stage.setTitle("SCARA Control Panel");
         stage.initStyle(StageStyle.UNDECORATED);
-        // stage.setFullScreen(true);
-        // stage.setFullScreenExitHint("");
+        stage.setFullScreen(true);
+        stage.setFullScreenExitHint("ESC");
         stage.show();
     }
 

@@ -11,9 +11,9 @@ Donde:
 El producto $\alpha P$ indica el ángulo que debe tener el stepper para alcanzar dicha posición. Dividiendo ese ángulo entre $\phi$, se obtiene $S$. Considerando $\phi = 1.8\text{°}$ y $R = 1$ para todos los steppers de las articulaciones rotacionales, se tiene
 $$
 \begin{align}
-    &P_{J_1} = 20:1 \rightarrow k_{J_1} = \frac{20 \times 4}{1.8} \approx 11.111111 \\
-    &P_{J_2} = 16:1 \rightarrow k_{J_2} = \frac{16 \times 4}{1.8} \approx 8.888889 \\
-    &P_{J_3} = 4:1 \rightarrow k_{J_3} = \frac{4 \times 4}{1.8} \approx 2.222222
+    &P_{J_1} = 20:1 \rightarrow k_{J_1} = \frac{20 \times 4}{1.8} \approx 44,444444 \\
+    &P_{J_2} = 16:1 \rightarrow k_{J_2} = \frac{16 \times 4}{1.8} \approx 35,555556 \\
+    &P_{J_3} = 4:1 \rightarrow k_{J_3} = \frac{4 \times 4}{1.8} \approx 8,888889
  \\ 
 \end{align}
 $$
