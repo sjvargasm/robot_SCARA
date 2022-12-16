@@ -1,5 +1,5 @@
 # Constantes de proporción
-Cada [[Calculos de constantes de proporción|constante]] calculada, se almacena en un arreglo `float factor[]` en la sección de configuraciones del código del Firmware del Arduino.
+Cada <a href="Calculos de constantes de proporción.md">constante</a> calculada, se almacena en un arreglo `float factor[]` en la sección de configuraciones del código del Firmware del Arduino.
 ```cpp
 const float factor[nSteppers] = {44.444444, 35.555556, 8.8888889, 100}
 ```
@@ -13,7 +13,7 @@ for (xStepper = 0; xStepper < nSteppers; xStepper++)
 runSteppers(stepper_position);
 ```
 # Fórmulas de cinemática
-Los cálculos de [[Fórmulas de cinemática#Cinemática directa|cinemática directa]] y [[Fórmulas de cinemática#Cinemática inversa|cinemática inversa]] se realizan en la clase `Calculator` de la GUI, con el propósito de reducir el uso de memoria y tiempo de procesamiento del Arduino.
+Los cálculos de <a href="Fórmulas de cinemática.md#cinemática-directa">cinemática directa</a> y <a href="Fórmulas de cinemática.md#cinemática-inversa">cinemática inversa</a> se realizan en la clase `Calculator` de la GUI, con el propósito de reducir el uso de memoria y tiempo de procesamiento del Arduino.
 ```java
 // Código abreviado
 public class Calculator {
