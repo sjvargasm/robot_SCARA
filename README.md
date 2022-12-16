@@ -1,10 +1,8 @@
 # Robot SCARA
 Diseño y programación de un Robot tipo SCARA. Proyecto originalmente planteado y ejecutado para la materia Proyecto de Sistemas Mecatrónicos II en la carrera Ingeniería en Electrónica con énfasis en Mecatrónica (IEK/MECA) de la Facultad Politécnica de la Universidad Nacional de Asunción (FPUNA).
 
-El diseño físico del Robot SCARA se obtuvo desde [este](https://howtomechatronics.com/projects/scara-robot-how-to-build-your-own-arduino-based-robot/) proyecto en [HowToMechatronics](https://howtomechatronics.com/). La programación se encuentra fuertemente inspirada en dicho proyecto.
-
 ## Uso
-// TODO: Explicación del uso
+Luego de la construcción del robot SCARA con los modelos proporcionados y su pertinente conexión, se carga el <a href="Software/Firmware/Firmware.ino">firmware</a> al Arduino y se ejecuta el <a href="Software/Gui">GUI</a> desde donde se realiza el control del Robot.
 
 ## Dependencias
 ### Arduino
@@ -12,7 +10,7 @@ El diseño físico del Robot SCARA se obtuvo desde [este](https://howtomechatron
 - Servo 1.1.8
 
 ### Java
-- jSerialComm 2.9.2
+- jSerialComm 2.9.2 (Ya incluido)
 
 # Legales
 
