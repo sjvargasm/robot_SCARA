@@ -5,38 +5,42 @@
 	- Específicamente para el robot SCARA, $J_1 = O = (0, 0)$ y $J_3 = (x, y)$ donde el efector final se ubica.
 - $\theta_i$ es el menor de los ángulos que un eslabón $i$ forma con la prolongación del eslabón $i-1$.
 	- Para el caso $\theta_1$, es el ángulo que forma el eslabón 1 con el eje $x$.
-- Transormación de rotación en un ángulo $\alpha$
-$$
-	\rot{\alpha} = \begin{bmatrix}
-	\cos\alpha & -\sin\alpha & 0 \\
-	\sin\alpha & \cos\alpha & 0 \\z
-	0 & 0 & 1
-	\end{bmatrix}
-$$
-- Transformación de traslación a un punto $(x,y)$
-$$
-	\trans{x}{y} = \begin{bmatrix}
-	1 & 0 & x \\
-	0 & 1 & y \\
-	0 & 0 & 1
-	\end{bmatrix}
-$$
 
 # Cinemática directa
-Siguiendo un procedimiento similar al algoritmo de Denavit-Hartenberg,
+Aplicando el algoritmo de Denavit-Hartenberg, se llega a la siguiente tabla
+
+| |$\theta$|$d$|$a$|$\alpha$|
+|:-:|:-:|:-:|:-:|:-:|
+|0-1|0|$d$|0|0|
+|1-2|$\theta_1$|0|$L_1$|0|
+|2-3|$\theta_2$|0|$L_2$|0|
+|3-4|$\theta_3$|0|0|0|
+Aplicando las transformaciones correspondientes hallamos la matriz $T$ transformación del algoritmo DH
+$$
+T = \begin{bmatrix}
+	cos(\theta_1 + \theta_2 + \theta_3) & -sin(\theta_1 + \theta_2 + \theta_3) & 0 & L_1 \cos{\theta_1} + L_2 \cos{(\theta_1 + \theta_2)} \\
+	sin(\theta_1 + \theta_2 + \theta_3) & cos(\theta_1 + \theta_2 + \theta_3) & 0 & L_1 \sin{\theta_1} + L_2 \sin{(\theta_1 + \theta_2)} \\
+	0 & 0 & 1 & d \\
+	0 & 0 & 0 & 1
+\end{bmatrix}
+$$
+Luego, para hallar la posición del efector final (EF) que es equivalente al origen del sistema de coordenadas del EF, se realiza
 $$
 	\begin{bmatrix}
-	x & y & 1
-	\end{bmatrix}^T = \rot{\theta_1} \trans{L_1}{0} \rot{\theta_2} \trans{L_2}{0}\begin{bmatrix} 0 & 0 & 1 \end{bmatrix}^T
+		x & y & z & 1
+	\end{bmatrix} ^T 
+	= T \;
+	\begin{bmatrix}
+		0 & 0 & 0 & 1
+	\end{bmatrix}^T
 $$
-se obtiene
+Así se obtiene que la posición del EF es
 $$
-	\newcommand{rot}[1]{\operatorname{Rot}({#1})}
-	\newcommand{trans}[2]{\operatorname{T}({#1}, {#2})}
-	\begin{align}
+\begin{align}
 	x &= L_1 \cos{\theta_1} + L_2 \cos{(\theta_1 + \theta_2)} \\
-	y &= L_1 \sin{\theta_1} + L_2 \sin{(\theta_1 + \theta_2)}
-	\end{align}
+	y &= L_1 \sin{\theta_1} + L_2 \sin{(\theta_1 + \theta_2)} \\
+	z &= d
+\end{align}
 $$
 # Cinemática inversa
 Aplicando el teorema de los cosenos sobre el triángulo $\triangle L_1 L_2 \overline{OJ_3}$, se obtiene
