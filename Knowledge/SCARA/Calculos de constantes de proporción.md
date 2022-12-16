@@ -1,5 +1,5 @@
 # Ángulos a pasos
-La interfaz gráfica devuelve el ángulo $\alpha$ que una articulación $J$ del robot debe tener con respecto al eje $y$. Esta posición está dada por el número $S$ de pasos que el stepper debe dar, que viene dado por:
+La interfaz gráfica devuelve el ángulo $\alpha$ que una articulación $J$ del robot debe tener con respecto al eje $x$. Esta posición está dada por el número $S$ de pasos que el stepper debe dar, que viene dado por:
 
 $$
 	S = \frac{\alpha P}{\phi R} = \frac{P}{\phi R} \alpha = k \alpha
