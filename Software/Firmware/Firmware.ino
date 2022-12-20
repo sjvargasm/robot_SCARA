@@ -13,7 +13,7 @@ const byte
 
 // Configuraciones
 const int
-    stepper_maxSpeedVal[nSteppers] = {200, 600, 600, 600},
+    stepper_maxSpeedVal[nSteppers] = {2000, 2000, 2000, 2000},
     stepper_accelVal[nSteppers] = {2000, 2000, 2000, 2000},
     stepper_maxPosition[nSteppers] = {2000, -6500, 0, 17000},
     stepper_startingPosition[nSteppers] = {0, 0, 0, 10000},

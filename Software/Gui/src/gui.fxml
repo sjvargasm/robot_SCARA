@@ -314,7 +314,7 @@
                                     <RowConstraints vgrow="SOMETIMES" />
                                  </rowConstraints>
                                  <children>
-                                    <Slider fx:id="velSlider" majorTickUnit="1000.0" max="4000.0" minorTickCount="500" onMouseDragged="#updateTextFieldValue" onMousePressed="#updateTextFieldValue" onMouseReleased="#sendData" value="4000.0" />
+                                    <Slider fx:id="velSlider" majorTickUnit="1000.0" max="2000.0" minorTickCount="500" onMouseDragged="#updateTextFieldValue" onMousePressed="#updateTextFieldValue" onMouseReleased="#sendData" value="2000.0" />
                                     <GridPane GridPane.rowIndex="1">
                                        <columnConstraints>
                                           <ColumnConstraints hgrow="SOMETIMES" percentWidth="25.0" />
@@ -343,7 +343,7 @@
                                     <RowConstraints vgrow="SOMETIMES" />
                                  </rowConstraints>
                                  <children>
-                                    <Slider fx:id="accelSlider" majorTickUnit="1000.0" max="2000.0" min="1000.0" minorTickCount="500" onMouseDragged="#updateTextFieldValue" onMousePressed="#updateTextFieldValue" onMouseReleased="#sendData" value="2000.0" />
+                                    <Slider fx:id="accelSlider" majorTickUnit="1000.0" max="4000.0" minorTickCount="500" onMouseDragged="#updateTextFieldValue" onMousePressed="#updateTextFieldValue" onMouseReleased="#sendData" value="2000.0" />
                                     <GridPane GridPane.rowIndex="1">
                                        <columnConstraints>
                                           <ColumnConstraints hgrow="SOMETIMES" percentWidth="25.0" />

@@ -1,4 +1,4 @@
-<img src="/Knowledge/SCARA/zCinemática directa.png"></a>
+![Visualización](/Teor%C3%ADa/%C3%9Atiles/Visualizaci%C3%B3n%20de%20posici%C3%B3n.png)
 
 # Definiciones preliminares
 - $L_i$ es el segmento formado por un eslabón $i$.
@@ -10,14 +10,14 @@
 # Cinemática directa
 Aplicando el algoritmo de Denavit-Hartenberg, se llega a la siguiente tabla
 
-| |$\theta$|$d$|$a$|$\alpha$|
-|:-:|:-:|:-:|:-:|:-:|
-|0-1|0|$d$|0|0|
-|1-2|$\theta_1$|0|$L_1$|0|
-|2-3|$\theta_2$|0|$L_2$|0|
-|3-4|$\theta_3$|0|0|0|
+|       |  $\theta$  |  $d$  |  $a$  | $\alpha$ |
+| :---: | :--------: | :---: | :---: | :------: |
+|  0-1  |     0      |  $d$  |   0   |    0     |
+|  1-2  | $\theta_1$ |   0   | $L_1$ |    0     |
+|  2-3  | $\theta_2$ |   0   | $L_2$ |    0     |
+|  3-4  | $\theta_3$ |   0   |   0   |    0     |
 
-Aplicando las transformaciones correspondientes hallamos la matriz $T$ transformación del algoritmo DH
+Luego, con las transformaciones correspondientes hallamos la matriz $T$ transformación del algoritmo DH
 
 $$
 T = \begin{bmatrix}
@@ -28,7 +28,7 @@ T = \begin{bmatrix}
 \end{bmatrix}
 $$
 
-Luego, para hallar la posición del efector final (EF) que es equivalente al origen del sistema de coordenadas del EF, se realiza
+Luego, para hallar la posición del Efector Final (EF) que es equivalente al origen del sistema de coordenadas del EF, se realiza
 
 $$
 	\begin{bmatrix}

@@ -19,7 +19,6 @@ public class Calculator {
         return coord;
     }
 
-    // FIXME: What is happening here
     /**
      * Calcula la cinemática inversa del robot SCARA
      * @param coord Arreglo con los valores cartesianos del efector final

@@ -1,3 +1,8 @@
+.settings/org.eclipse.jdt.core.prefs
+.vscode/arduino.json
+.vscode/c_cpp_properties.json
+.vscode/launch.json
+.vscode/settings.json
 Software/Firmware/output/build.options.json
 Software/Firmware/output/Firmware.ino.eep
 Software/Firmware/output/Firmware.ino.elf
@@ -79,18 +84,4 @@ Software/Firmware/output/sketch/Definitions.h
 Software/Firmware/output/sketch/Firmware.ino.cpp
 Software/Firmware/output/sketch/Firmware.ino.cpp.d
 Software/Firmware/output/sketch/Firmware.ino.cpp.o
-.vscode/arduino.json
-.vscode/c_cpp_properties.json
-.vscode/launch.json
-.vscode/settings.json
-.settings/org.eclipse.jdt.core.prefs
-Calculos de constantes.txt
 TODO
-Knowledge/SCARA/.obsidian/app.json
-Knowledge/SCARA/.obsidian/appearance.json
-Knowledge/SCARA/.obsidian/core-plugins.json
-Knowledge/SCARA/.obsidian/hotkeys.json
-Knowledge/SCARA/.obsidian/workspace.json
-Knowledge/SCARA/.obsidian/starred.json
-Knowledge/SCARA/.obsidian/graph.json
-Knowledge/SCARA/.obsidian/snippets/centerTable.css

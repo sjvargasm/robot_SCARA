@@ -1,25 +1,21 @@
-# RC-1
-Candidato final de entrega!
-## Software
-### Cambios
+# 1.0
+Versión final de entrega :partying_face:
+- Eliminada funcionalidad de guardado de posiciones[^volverá].
+- Aumentada velocidad máxima del robot[^explicación].
+- Mejorada visualización de archivos Markdown.
+- Agregada simulación en python
+
+# RC-1 / RC-2
+Candidato final de entrega! 👍
 - Parche sobre comunicación Serial. Ahora sí nos hace caso.
 
----
-
 # 22w44b
-Ahora con GUI! :tada:
-## Software
-### Cambios
-- GUI funcional (Puede presentar errores)
-### Librerias
-#### Java
-- jSerialComm 2.9.2
-
----
+Ahora con GUI :tada:
+- GUI funcional[^buggeado]
 
 # 22w44a
 Primera versión en existir. :relieved:
-### Librerias
-#### Arduino
-- AccelStepper 1.61
-- Servo 1.1.8
+
+[^volverá]: Se pretende volver a agregar esta funcionalidad en próximas versiones.
+[^explicación]: Por error, la velocidad máxima se mantuvo en apenas 600 steps/s, ahora es de 2000 steps/s; sin embargo, como consecuencia del microstepping, la velocidad máxima real es apenas 1/4 de la configurada.
+[^buggeado]: Puede presentar errores

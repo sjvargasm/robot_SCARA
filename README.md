@@ -14,6 +14,9 @@ La explicación de ciertas partes del código se encuentra en <a href="Knowledge
 ### Java
 - jSerialComm 2.9.2 (Ya incluido)
 
+### Python
+- Robotics Toolbox 1.0.3
+
 # Legales
 
 ## Licencias de uso y distribución
