@@ -12,6 +12,9 @@ Candidato final de entrega! 👍
 # 22w44b
 Ahora con GUI :tada:
 - GUI funcional[^buggeado]
+- Agregados archivos License, Readme y Changelog
+- GUI funcional :tada:
+- Reorganizado estructura de archivos
 
 # 22w44a
 Primera versión en existir. :relieved:

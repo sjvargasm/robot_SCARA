@@ -22,11 +22,12 @@ La explicación de ciertas partes del código se encuentra en <a href="Knowledge
 ## Licencias de uso y distribución
 Cada carpeta contiene sus propias licencias, a menos que se indique lo contrario.
 
-|  Carpeta   |    Licencia    |
-|------------|----------------|
-| Software/  |   GNU GPLv3    |
-| Hardware/  | CERN-OHL-S-2.1 |
-| Diseños/   |  CC BY-SA 4.0  |
+| Carpeta   | Licencia       |
+| --------- | -------------- |
+| Software/ | GNU GPLv3      |
+| Hardware/ | CERN-OHL-S-2.1 |
+| Diseños/  | CC BY-SA 4.0   |
+| Teoría/   | CC BY-SA 4.0   |
 
 ## Copyright
 ©2022 - Diego Noguera, Sebastián Vargas, Marissa Vazquez, Engelberto Unzain, Gerardo Cañete
