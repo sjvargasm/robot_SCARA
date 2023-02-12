@@ -10,7 +10,7 @@ Donde:
 - $\phi$ es el ángulo de cada paso.
 - $R$ es la resolución del paso, un factor que permite escalar $\phi$ consiguiendo microstepping.
 
-El producto $\alpha P$ indica el ángulo que debe tener el stepper para alcanzar dicha posición. Dividiendo ese ángulo entre $\phi$, se obtiene $S$. Considerando $\phi = 1.8\text{°}$ y $R = 1$ para todos los steppers de las articulaciones rotacionales, se tiene
+El producto $\alpha P$ indica el ángulo que debe tener el stepper para alcanzar dicha posición. Dividiendo ese ángulo entre $\phi$, se obtiene $S$. Considerando $\phi = 1.8\text{°}$ y $R = 4$ para todos los steppers de las articulaciones rotacionales, se tiene
 
 $$
 \begin{align}
